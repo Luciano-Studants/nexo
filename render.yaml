@@ -1,0 +1,30 @@
+# Publicação no Render (Blueprint). Veja docs/PUBLICACAO.md.
+# O banco fica no Neon (grátis e permanente): cole a conexão em DATABASE_URL. Veja docs/PUBLICACAO.md.
+
+services:
+  - type: web
+    name: nexo
+    runtime: node
+    plan: free          # dorme após 15 min sem acesso; o monitor de /api/ping (guia) o mantém acordado. Para folga no evento, use "starter".
+    buildCommand: npm install --include=dev && npm run build && cd server && npm install
+    startCommand: cd server && npm run start:prod
+    healthCheckPath: /api/ping
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATABASE_URL
+        sync: false           # conexão do Neon (começa com postgresql://)
+      - key: DATABASE_SSL
+        value: "true"         # o Neon exige SSL
+      - key: TRUST_PROXY
+        value: "1"
+      - key: IP_HASH_SECRET
+        generateValue: true
+      - key: QR_SECRET
+        generateValue: true   # NÃO troque depois de imprimir os QR Codes (todos deixariam de valer)
+      - key: ADMIN_USER
+        value: admin_procidadan
+      - key: ADMIN_PASSWORD
+        sync: false           # o Render pergunta no primeiro deploy; mínimo de 12 caracteres
+      - key: PUBLIC_APP_URL
+        sync: false           # endereço final do site (https://...), preencha após o primeiro deploy
