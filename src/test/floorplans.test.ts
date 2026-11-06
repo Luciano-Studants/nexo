@@ -5,7 +5,7 @@ import { validateFullName } from '../components/Entry';
 
 // Mesmos ids da semente do banco (server/seeds), por piso.
 const SEED: Record<number, string[]> = {
-  1: ['tecnicas-radiologicas', 'laboratorio-anatomia', 'laboratorio-enfermagem', 'direcao', 'laboratorio-multidisciplinar', 'biblioteca', 'a-nomear-topo-direita'],
+  1: ['tecnicas-radiologicas', 'laboratorio-anatomia', 'laboratorio-enfermagem', 'direcao', 'laboratorio-multidisciplinar', 'biblioteca', 'saad'],
   2: ['sala-201', 'sala-202', 'circuitos', 'laboratorio-desenvolvimento', 'programacao-1', 'sala-de-jogos', 'imagem', 'laboratorio-desenvolvimento-internet', 'infraestrutura', 'programacao-2'],
   3: ['sala-301', 'sala-302', 'sala-303', 'sala-304', 'sala-305', 'sala-306', 'sala-300', 'nde-e-cpa', 'sala-de-ti', 'auditorio', 'laboratorio-fisica', 'sala-dos-professores'],
 };

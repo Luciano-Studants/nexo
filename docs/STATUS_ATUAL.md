@@ -71,3 +71,9 @@ Testes: `npm test` (frontend) e `cd server && npm test` (exige `DATABASE_URL` de
 - Banco no Neon (grátis, permanente); servidor no Render grátis, mantido acordado por monitor externo em `/api/ping` (rota nova, não acessa o banco, para não gastar as horas do Neon).
 - `render.yaml` e docs/PUBLICACAO.md atualizados. Tempo de conexão ao banco aumentado para 15 s (o Neon acorda sozinho).
 - Não testado na hospedagem real; limites e preços dos serviços devem ser conferidos antes de contratar.
+
+## Atualização: sala SAAD (1º piso)
+- O ambiente do topo à direita do 1º piso, antes "A nomear", é o **SAAD** (slug `saad`). Continuam 29 ambientes.
+- Migração `005_sala_saad.sql` renomeia o registro existente (mesmo id: fotos, QR, visitas e auditoria preservados). Roda sozinha no deploy (`start:prod`). Semente, planta (`src/floorplans.ts`) e teste das plantas atualizados.
+- Se a sala já tinha QR ativo, a etiqueta impressa ficou com o nome antigo: rode `npm run qr -- prepare --slugs saad` (em `server`), confira e ative a versão pendente pelo painel.
+- Verificado em PostgreSQL 16 local: banco novo e banco com estado antigo (A nomear) terminam com 29 ambientes e nenhum duplicado; 72 testes do servidor e 18 do frontend passam. Não verificado no Render/Neon reais.

@@ -54,7 +54,7 @@ export const FLOOR_PLANS: FloorPlan[] = [
       struct('wc-1b', ['WC'], 58, 0, 78, 82),
       struct('wc-1c', ['WC'], 136, 0, 78, 82),
       struct('elevador-1', ['Elevador'], 214, 0, 283, 82),
-      room('a-nomear-topo-direita', ['A nomear'], 497, 37, 180, 196),
+      room('saad', ['SAAD'], 497, 37, 180, 196),
       room('laboratorio-multidisciplinar', ['Laboratório', 'Multidisciplinar'], 497, 233, 180, 210),
       room('biblioteca', ['Biblioteca'], 497, 443, 180, 342),
       room('tecnicas-radiologicas', ['Técnicas', 'Radiológicas'], 0, 193, 214, 108),

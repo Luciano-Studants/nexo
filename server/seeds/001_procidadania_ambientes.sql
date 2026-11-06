@@ -17,14 +17,14 @@ SELECT fl.id, r.slug, r.name, r.num
 FROM floors fl
 JOIN events e ON e.id = fl.event_id AND e.slug = 'procidadania-ceumap'
 JOIN (VALUES
-    -- 1º piso (7). O ambiente do topo à direita ainda não tem nome.
+    -- 1º piso (7). O ambiente do topo à direita é o SAAD.
     (1, 'tecnicas-radiologicas',  'Técnicas Radiológicas',          NULL),
     (1, 'laboratorio-anatomia',   'Laboratório de Anatomia',        NULL),
     (1, 'laboratorio-enfermagem', 'Laboratório de Enfermagem',      NULL),
     (1, 'direcao',                'Direção',                        NULL),
     (1, 'laboratorio-multidisciplinar', 'Laboratório Multidisciplinar', NULL),
     (1, 'biblioteca',             'Biblioteca',                     NULL),
-    (1, 'a-nomear-topo-direita',  'A nomear',                       NULL),
+    (1, 'saad',                   'SAAD',                           NULL),
     -- 2º piso (10)
     (2, 'sala-201',               'Sala 201',                       '201'),
     (2, 'sala-202',               'Sala 202',                       '202'),
