@@ -5,7 +5,7 @@ import { validateFullName } from '../components/Entry';
 
 // Mesmos ids da semente do banco (server/seeds), por piso.
 const SEED: Record<number, string[]> = {
-  1: ['tecnicas-radiologicas', 'laboratorio-anatomia', 'laboratorio-enfermagem', 'direcao', 'laboratorio-multidisciplinar', 'biblioteca', 'saad'],
+  1: ['tecnicas-radiologicas', 'laboratorio-anatomia', 'laboratorio-enfermagem', 'direcao', 'laboratorio-multidisciplinar', 'biblioteca', 'saad', 'a-nomear-topo-direita'],
   2: ['sala-201', 'sala-202', 'circuitos', 'laboratorio-desenvolvimento', 'programacao-1', 'sala-de-jogos', 'imagem', 'laboratorio-desenvolvimento-internet', 'infraestrutura', 'programacao-2'],
   3: ['sala-301', 'sala-302', 'sala-303', 'sala-304', 'sala-305', 'sala-306', 'sala-300', 'nde-e-cpa', 'sala-de-ti', 'auditorio', 'laboratorio-fisica', 'sala-dos-professores'],
 };
@@ -33,10 +33,22 @@ describe('plantas', () => {
     }
   });
 
-  it('ids de células são únicos e são 29 ambientes no total', () => {
+  it('ids de células são únicos e são 30 ambientes no total', () => {
     const ids = FLOOR_PLANS.flatMap((p) => p.cells.map((c) => c.id));
     expect(new Set(ids).size).toBe(ids.length);
-    expect(FLOOR_PLANS.flatMap((p) => p.cells.filter((c) => c.kind === 'room')).length).toBe(29);
+    expect(FLOOR_PLANS.flatMap((p) => p.cells.filter((c) => c.kind === 'room')).length).toBe(30);
+  });
+
+  it('SAAD e A nomear são salas independentes, com SAAD acima', () => {
+    const first = FLOOR_PLANS.find((p) => p.order === 1)!;
+    const saad = first.cells.find((c) => c.slug === 'saad')!;
+    const unnamed = first.cells.find((c) => c.slug === 'a-nomear-topo-direita')!;
+    expect(saad.kind).toBe('room');
+    expect(unnamed.kind).toBe('room');
+    expect(saad.x).toBe(unnamed.x);
+    expect(saad.w).toBe(unnamed.w);
+    expect(saad.y + saad.h).toBe(unnamed.y);
+    expect(saad.y).toBeLessThan(unnamed.y);
   });
 
   it('caminho de porta é válido', () => {

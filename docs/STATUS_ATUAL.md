@@ -77,3 +77,10 @@ Testes: `npm test` (frontend) e `cd server && npm test` (exige `DATABASE_URL` de
 - Migração `005_sala_saad.sql` renomeia o registro existente (mesmo id: fotos, QR, visitas e auditoria preservados). Roda sozinha no deploy (`start:prod`). Semente, planta (`src/floorplans.ts`) e teste das plantas atualizados.
 - Se a sala já tinha QR ativo, a etiqueta impressa ficou com o nome antigo: rode `npm run qr -- prepare --slugs saad` (em `server`), confira e ative a versão pendente pelo painel.
 - Verificado em PostgreSQL 16 local: banco novo e banco com estado antigo (A nomear) terminam com 29 ambientes e nenhum duplicado; 72 testes do servidor e 18 do frontend passam. Não verificado no Render/Neon reais.
+
+
+## Correção: SAAD e A nomear como salas distintas (1º piso)
+- SAAD permanece como sala visitável independente; A nomear volta a existir como outro ambiente visitável, imediatamente abaixo de SAAD no esquema 2D.
+- A geometria reserva duas áreas empilhadas no espaço anteriormente ocupado pelo único bloco SAAD; os acessos do lado do corredor são separados.
+- Migração `006_sala_a_nomear.sql` insere A nomear apenas se ainda não existir no 1º piso. Não altera o registro SAAD nem seus vínculos de fotos, QR Codes, visitas ou auditoria.
+- A semente e o teste de consistência passam a contemplar 30 ambientes. Pisos 2 e 3 não foram alterados.
