@@ -39,6 +39,13 @@ describe('plantas', () => {
     expect(FLOOR_PLANS.flatMap((p) => p.cells.filter((c) => c.kind === 'room')).length).toBe(30);
   });
 
+  it('nomes atualizados de Biomedicina e Reitoria permanecem nos pisos corretos', () => {
+    const first = FLOOR_PLANS.find((p) => p.order === 1)!;
+    const third = FLOOR_PLANS.find((p) => p.order === 3)!;
+    expect(first.cells.find((c) => c.slug === 'a-nomear-topo-direita')?.label).toEqual(['Laboratório de', 'Biomedicina']);
+    expect(third.cells.find((c) => c.slug === 'nde-e-cpa')?.label).toEqual(['Reitoria']);
+  });
+
   it('SAAD e A nomear são salas independentes, com SAAD acima', () => {
     const first = FLOOR_PLANS.find((p) => p.order === 1)!;
     const saad = first.cells.find((c) => c.slug === 'saad')!;

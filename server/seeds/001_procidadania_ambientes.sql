@@ -17,7 +17,7 @@ SELECT fl.id, r.slug, r.name, r.num
 FROM floors fl
 JOIN events e ON e.id = fl.event_id AND e.slug = 'procidadania-ceumap'
 JOIN (VALUES
-    -- 1º piso (8). SAAD e A nomear são ambientes independentes.
+    -- 1º piso (8). SAAD e Laboratório de Biomedicina são ambientes independentes.
     (1, 'tecnicas-radiologicas',  'Técnicas Radiológicas',          NULL),
     (1, 'laboratorio-anatomia',   'Laboratório de Anatomia',        NULL),
     (1, 'laboratorio-enfermagem', 'Laboratório de Enfermagem',      NULL),
@@ -25,7 +25,7 @@ JOIN (VALUES
     (1, 'laboratorio-multidisciplinar', 'Laboratório Multidisciplinar', NULL),
     (1, 'biblioteca',             'Biblioteca',                     NULL),
     (1, 'saad',                   'SAAD',                           NULL),
-    (1, 'a-nomear-topo-direita',  'A nomear',                       NULL),
+    (1, 'a-nomear-topo-direita',  'Laboratório de Biomedicina',      NULL),
     -- 2º piso (10)
     (2, 'sala-201',               'Sala 201',                       '201'),
     (2, 'sala-202',               'Sala 202',                       '202'),
@@ -45,7 +45,7 @@ JOIN (VALUES
     (3, 'sala-305',               'Sala 305',                       '305'),
     (3, 'sala-306',               'Sala 306',                       '306'),
     (3, 'sala-300',               'Sala 300',                       '300'),
-    (3, 'nde-e-cpa',              'NDE e CPA',                      NULL),
+    (3, 'nde-e-cpa',              'Reitoria',                       NULL),
     (3, 'sala-de-ti',             'Sala de TI',                     NULL),
     (3, 'auditorio',              'Auditório',                      NULL),
     (3, 'laboratorio-fisica',     'Laboratório de Física',          NULL),

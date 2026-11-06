@@ -84,3 +84,10 @@ Testes: `npm test` (frontend) e `cd server && npm test` (exige `DATABASE_URL` de
 - A geometria reserva duas áreas empilhadas no espaço anteriormente ocupado pelo único bloco SAAD; os acessos do lado do corredor são separados.
 - Migração `006_sala_a_nomear.sql` insere A nomear apenas se ainda não existir no 1º piso. Não altera o registro SAAD nem seus vínculos de fotos, QR Codes, visitas ou auditoria.
 - A semente e o teste de consistência passam a contemplar 30 ambientes. Pisos 2 e 3 não foram alterados.
+
+
+## Atualização de nomes: Biomedicina e Reitoria
+- No 1º piso, o ambiente de slug `a-nomear-topo-direita` passa a ser exibido como **Laboratório de Biomedicina**; o slug e os vínculos existentes são preservados.
+- O ambiente de slug `nde-e-cpa` (cadastrado no 3º piso) passa a ser exibido como **Reitoria**; o slug e os vínculos existentes são preservados.
+- Migração `007_renomear_biomedicina_reitoria.sql` atualiza bancos existentes. A semente e o desenho do mapa usam os novos nomes.
+- Não há alteração de geometria, portas ou disposição dos pisos.
